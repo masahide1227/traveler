@@ -1,12 +1,12 @@
-class MessagesController < ApplicationController
+class Direct_messagesController < ApplicationController
     before_action :set_chat_room
     before_action :check_mutual_follow, only: [:create]
   
     def create
-      @message = @chat_room.direct_messages.build(direct_message_params)
-      @message.user = current_user
+      @Direct_message = @chat_room.Direct_messages.build(Direct_message_params)
+      @Direct_message.user = current_user
   
-      if @message.save
+      if @Direct_message.save
         redirect_to @chat_room
       else
         render 'chat_rooms/show'
@@ -19,8 +19,8 @@ class MessagesController < ApplicationController
       @chat_room = ChatRoom.find(params[:chat_room_id])
     end
   
-    def direct_message_params
-      params.require(:direct_message).permit(:content)
+    def Direct_message_params
+      params.require(:Direct_message).permit(:content)
     end
   
     # 相互フォローしていない場合、メッセージ送信を制限

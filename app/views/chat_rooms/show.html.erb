@@ -1,16 +1,16 @@
 <div class="chat-room">
   <h1>チャットルーム: <%= @chat_room.name %></h1>
 
-  <div class="messages">
-    <% @chat_room.messages.each do |message| %>
+  <div class="direct-messages">
+    <% @chat_room.direct_messages.each do |direct_message| %>
       <div class="message">
-        <p><strong><%= message.user.name %>:</strong> <%= message.body %></p>
+        <p><strong><%= direct_message.user.name %>:</strong> <%= direct_message.body %></p>
       </div>
     <% end %>
   </div>
 
-  <div class="new-message">
-    <%= form_with(model: [@chat_room, @chat_room.messages.build], local: true) do |form| %>
+  <div class="new-direct-message">
+    <%= form_with(model: [@chat_room, @chat_room.direct_messages.build], local: true) do |form| %>
       <div class="form-group">
         <%= form.label :body, "メッセージ" %>
         <%= form.text_area :body, rows: 3, class: "form-control", maxlength: 140 %>
@@ -19,5 +19,7 @@
     <% end %>
   </div>
 </div>
+
+
 
 

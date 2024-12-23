@@ -1,4 +1,4 @@
-class Message < ApplicationRecord
+class DirectMessage < ApplicationRecord
   belongs_to :chat_room
   belongs_to :user
 

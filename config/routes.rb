@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :chat_rooms do 
+    resources :direct_messages, only: [:create] 
+  end
+
   resources :chat_rooms, only: [:index, :show, :create, :destroy]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
